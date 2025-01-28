@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.10.2",
+    "clsx": "^2.1.1",
     "mongodb": "^6.12.0",
     "mongoose": "^8.9.5",
     "next": "15.1.6",
+    "query-string": "^9.1.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "svix": "^1.45.1"
+    "svix": "^1.45.1",
+    "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

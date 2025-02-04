@@ -3,7 +3,7 @@ import { headers } from "next/headers";
 import User from "@/lib/mongodb/models/user.model";
 import { createUser, deleteUser, updateUser } from "@/lib/actions/user.actions";
 import { NextResponse } from "next/server";
-import { clerkClient } from '@clerk/nextjs/server'
+// import { clerkClient } from '@clerk/nextjs/server'
 
 
 export async function POST(req) {
@@ -74,10 +74,12 @@ export async function POST(req) {
     if (newUser) {
       await clerkClient.user.updateUserMetadata(id, {
         publicMetadata: {
-          userId: newUser._id,
+          userMongoId: newUser._id,
+          
         },
       });
     }
+    console.log(newUser);
 
     return NextResponse.json({ message: "OK", user: newUser });
   }

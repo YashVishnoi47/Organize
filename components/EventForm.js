@@ -22,7 +22,7 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import { createEvent } from "@/lib/actions/events.actions";
 
-const EventForm = ({ type,userId }) => {
+const EventForm = ({ type, userId }) => {
   const form = useForm({
     resolver: zodResolver(eventFormSchema),
     defaultValues: {
@@ -39,27 +39,32 @@ const EventForm = ({ type,userId }) => {
     },
   });
 
+  const { startUpload } = useUploadThing("imageUploader");
+
   const router = useRouter();
 
   const [files, setFiles] = useState([]);
 
+  // Form Onsubmit logic.
   const onSubmit = async (values) => {
+    let uploadedImageUrl = values.imageUrl;
+    console.log("Initial Image URL", uploadedImageUrl);
 
-    let uploadedImageUrl = values.Url;
-
-    if (files.lenght > 0) {
+    // Uploading the Image if provided.
+    if (files.length > 0) {
       const uploadedImages = await startUpload(files);
 
       if (!uploadedImages) {
+        console.log("Image not uploaded", uploadedImageUrl);
         return;
       }
 
       uploadedImageUrl = uploadedImages[0].url;
     }
 
+    // Creating the Event if the type === "create".
     if (type === "create") {
       try {
-        console.log("user",userId);
         const newEvent = await createEvent({
           event: { ...values, imageUrl: uploadedImageUrl },
           userId,
@@ -83,7 +88,7 @@ const EventForm = ({ type,userId }) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className=" flex justify-center gap-10 mt-8 items-center h-full w-full"
         >
-          {/* Event details  */}
+          {/* Event Details  */}
           <div className="formfield flex flex-col gap-2 w-[50%] h-full -2 ">
             {/* Title and Dropdown */}
             <div className="flex px-2 gap-4 justify-center w-full">
@@ -105,7 +110,7 @@ const EventForm = ({ type,userId }) => {
                 )}
               />
 
-              {/* Dropdown */}
+              {/* Category Dropdown */}
               <FormField
                 control={form.control}
                 name="categoryId"

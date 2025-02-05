@@ -1,9 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
 import EventForm from "@/components/EventForm";
 
-const CreateEvent = async () => {
-  const  {userId}  = await auth(); 
-  console.log(userId);
+const CreateEvent = () => {
+  const { sessionClaims, error } = auth(); // Destructure `error` for error handling
+  const userId = sessionClaims?.publicMetadata?.userId;
+
 
   return (
     <>

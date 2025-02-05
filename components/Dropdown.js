@@ -41,14 +41,14 @@ const Dropdown = ({ value, onChangeHandler }) => {
       const categoriesList = await allCategories();
 
       categoriesList && setcategories(categoriesList);
-      console.log("List", categoriesList);
+      // console.log("List", categoriesList);
     };
 
     getAllCategories();
   }, []);
 
   return (
-    <Select>
+    <Select onValueChange={(value) => onChangeHandler(value)}>
       <SelectTrigger className="w-full rounded-full mt-2">
         <SelectValue placeholder="Select Category" />
       </SelectTrigger>
@@ -59,7 +59,6 @@ const Dropdown = ({ value, onChangeHandler }) => {
               className="py-3"
               key={category._id}
               value={category._id}
-              onClick={() => onChangeHandler(category._id)}
             >
               {category.name}
             </SelectItem>
@@ -85,7 +84,7 @@ const Dropdown = ({ value, onChangeHandler }) => {
               <AlertDialogAction
                 onClick={() => startTransition(handleAddCategory)}
               >
-                Continue
+                Add
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>

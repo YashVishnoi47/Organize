@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <div className="relative w-full h-screen bg-white flex items-center justify-center overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[url('/light-bg-pattern.png')] bg-cover opacity-10"></div>
+      <div className="absolute inset-0  bg-cover opacity-10"></div>
 
       {/* Main Content */}
       <div className="relative z-10 text-center max-w-4xl p-6">

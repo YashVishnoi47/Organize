@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body>
+        <body className="selection:bg-purple-400">
           <Navbar />
           {children}
         </body>

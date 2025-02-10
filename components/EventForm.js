@@ -20,23 +20,32 @@ import { eventFormSchema } from "@/lib/validator";
 import { Checkbox } from "./ui/checkbox";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
-import { createEvent } from "@/lib/actions/events.actions";
+import { createEvent, updateEvent } from "@/lib/actions/events.actions";
+import mongoose from "mongoose";
 
-const EventForm = ({ type, userId }) => {
+const EventForm = ({ event, type, userId, eventId }) => {
+  // Defautl values for the Event form.
   const form = useForm({
     resolver: zodResolver(eventFormSchema),
-    defaultValues: {
-      title: "",
-      discription: "",
-      location: "",
-      imageUrl: "",
-      startDateTime: new Date(),
-      endDateTime: new Date(),
-      categoryId: "",
-      price: "",
-      isFree: false,
-      url: "",
-    },
+    defaultValues:
+      event && type === "Update"
+        ? {
+            ...event,
+            startDateTime: new Date(event.startDateTime),
+            endDateTime: new Date(event.endDateTime),
+          }
+        : {
+            title: "",
+            description: "",
+            location: "",
+            imageUrl: "",
+            startDateTime: new Date(),
+            endDateTime: new Date(),
+            categoryId: "",
+            price: "",
+            isFree: false,
+            url: "",
+          },
   });
 
   const { startUpload } = useUploadThing("imageUploader");
@@ -48,7 +57,6 @@ const EventForm = ({ type, userId }) => {
   // Form Onsubmit logic.
   const onSubmit = async (values) => {
     let uploadedImageUrl = values.imageUrl;
-    console.log("Initial Image URL", uploadedImageUrl);
 
     // Uploading the Image if provided.
     if (files.length > 0) {
@@ -77,6 +85,29 @@ const EventForm = ({ type, userId }) => {
         }
       } catch (error) {
         console.log(error);
+      }
+    }
+    //Updating the Event if the type === "Update"
+    if (type === "Update") {
+      if (!eventId) {
+        router.push("/");
+        return;
+      }
+
+      try {
+        const updatedEvent = await updateEvent({
+          userId,
+          event: { ...values, imageUrl: uploadedImageUrl, _id: eventId },
+          path: `/events/${eventId}`,
+        });
+        console.log("Updated Event", updatedEvent);
+
+        if (updatedEvent) {
+          form.reset();
+          router.push(`/events/${updatedEvent._id}`);
+        }
+      } catch (error) {
+        console.log("Update Event OnSubmit", error);
       }
     }
   };
@@ -291,7 +322,7 @@ const EventForm = ({ type, userId }) => {
               disabled={form.formState.isSubmitting}
               type="submit"
             >
-              {form.formState.isSubmitting ? "submitting..." : `Create ${type}`}
+              {form.formState.isSubmitting ? "submitting..." : `${type} Event`}
             </Button>
           </div>
 

@@ -21,7 +21,6 @@ import { Checkbox } from "./ui/checkbox";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import { createEvent, updateEvent } from "@/lib/actions/events.actions";
-import mongoose from "mongoose";
 
 const EventForm = ({ event, type, userId, eventId }) => {
   // Defautl values for the Event form.

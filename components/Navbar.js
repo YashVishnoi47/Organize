@@ -31,7 +31,7 @@ const Navbar = () => {
         <SignedIn>
           <div className="Links flex gap-4">
             <Link className="hover:underline" href="/events/create">Create Events</Link>
-            <Link className="hover:underline" href="/">Your Orders</Link>
+            <Link className="hover:underline" href="/profile">Your Profile</Link>
             <Link className="hover:underline" href="/">Your Tickets</Link>
           </div>
           <UserButton className="ml-4"/>

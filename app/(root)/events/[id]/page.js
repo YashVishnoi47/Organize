@@ -14,9 +14,9 @@ const EventPage = async ({ params: { id }, searchParams }) => {
   const event = await getEventById(id);
 
   const relatedEvents = await getRelatedEventsByCategory(
-     event.category._id,
+    event.category._id,
     event._id,
-    searchParams.page,
+    searchParams.page
   );
 
   console.log(relatedEvents?.data);
@@ -85,10 +85,11 @@ const EventPage = async ({ params: { id }, searchParams }) => {
               </div>
             )}
           </div>
-
-          <button className="mt-8 w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity">
-            Buy Ticket Now
-          </button>
+          <Link href={`/checkout/${event._id}`}>
+            <button className="mt-8 w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity">
+              Buy Ticket Now
+            </button>
+          </Link>
         </div>
       </div>
 

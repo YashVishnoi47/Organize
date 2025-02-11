@@ -9,7 +9,7 @@ const Payment = ({ event, userId }) => {
 
   const buyTickets = async () => {
     try {
-      const Ticket = await buyTicket({ userId, eventId: event._id });
+      const Ticket = await buyTicket( userId, event._id );
 
       if (Ticket) {
         router.push("/profile");

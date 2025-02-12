@@ -1,12 +1,14 @@
 import { auth } from "@clerk/nextjs/server";
 import React from "react";
-import { getEventsByUser } from "@/lib/actions/events.actions";
+import { getEventsByUser, getEventsTickets } from "@/lib/actions/events.actions";
 import Collections from "@/components/Collections";
 
 const Profile = async () => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.publicMetadata?.userId;
   const OrganizedEvents = await getEventsByUser({ userId, page: 1 });
+  const Tickets = await getEventsTickets( userId );
+  // console.log("Tickts",Tickets);
 
   return (
     <div className="min-h-screen w-full py-10 px-4 bg-gray-50">
@@ -43,12 +45,12 @@ const Profile = async () => {
           <h2 className="text-3xl font-bold text-gray-800 mb-6">Your Tickets</h2>
           <div className="bg-white rounded-xl shadow-lg p-6">
             <Collections
-              data={OrganizedEvents?.data} // Dummy data; replace with actual ticket data.
+              data={Tickets?.data} 
               emptyTitle="No tickets found!"
               collectionType="Tickets"
               limit={3}
               page={1}
-              totalPages={OrganizedEvents.length}
+              totalPages={Tickets.length}
             />
           </div>
         </section>

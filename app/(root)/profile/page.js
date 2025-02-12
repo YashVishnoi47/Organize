@@ -71,7 +71,7 @@ const Profile = async () => {
                 })}
               </div>
             ) : (
-              <h3 className="text-lg text-gray-500 mt-10">{emptyTitle}</h3>
+              <h3 className="text-lg text-gray-500 mt-10">No tickets</h3>
             )}
           </div>
         </section>

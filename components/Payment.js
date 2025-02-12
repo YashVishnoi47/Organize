@@ -1,21 +1,22 @@
 "use client";
 import React from "react";
 import { Button } from "./ui/button";
-import { buyTicket } from "@/lib/actions/user.actions";
 import { useRouter } from "next/navigation";
+import { createTicket } from "@/lib/actions/events.actions";
 
 const Payment = ({ event, userId }) => {
   const router = useRouter();
-
+  
+  // Creating Ticket.
   const buyTickets = async () => {
     try {
-      const Ticket = await buyTicket( userId, event._id );
+      const newTicket = await createTicket(userId, event);
 
-      if (Ticket) {
+      if (newTicket) {
         router.push("/profile");
       }
     } catch (error) {
-      console.log("Payment error",error);
+      console.log("Ticket error", error);
     }
   };
 

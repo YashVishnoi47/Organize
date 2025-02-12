@@ -13,7 +13,6 @@ import DeleteEventBtn from "./DeleteEventBtn";
 const Card = async ({ event, hasOrderLink, hidePrice }) => {
   const { sessionClaims } = await auth();
   const userId = sessionClaims?.publicMetadata.userId;
-
   const isEventOwner = userId === event.organizer._id.toString();
 
   return (
@@ -50,7 +49,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
           {event.title}
         </h3>
         <p className="text-white inline p-1 px-3 rounded-full bg-purple-400 text-center text-xs mb-4">
-          {event.category.name}{" "}
+          {event.category ? event.category.name : "Category Not Available"}
         </p>
         {!hidePrice && (
           <span className="text-xs bg-red-400  ml-4 p-1 px-3 rounded-full text-white">

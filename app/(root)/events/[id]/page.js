@@ -9,17 +9,20 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { formatDateTime } from "@/lib/utils";
 import Link from "next/link";
 import Collections from "@/components/Collections";
+import { auth } from "@clerk/nextjs/server";
+import { Button } from "@/components/ui/button";
 
 const EventPage = async ({ params: { id }, searchParams }) => {
+  const { sessionClaims } = await auth();
+  const userId = sessionClaims?.publicMetadata.userId;
   const event = await getEventById(id);
-
   const relatedEvents = await getRelatedEventsByCategory(
     event.category._id,
     event._id,
     searchParams.page
   );
 
-  console.log(relatedEvents?.data);
+  const isEventOwner = userId === event.organizer._id.toString();
 
   return (
     <div className="w-full min-h-screen bg-gray-50 text-black">
@@ -85,11 +88,17 @@ const EventPage = async ({ params: { id }, searchParams }) => {
               </div>
             )}
           </div>
-          <Link href={`/checkout/${event._id}`}>
-            <button className="mt-8 w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity">
+          {!isEventOwner ? (
+            <Link href={`/checkout/${event._id}`}>
+              <button className="mt-8 w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity">
+                Buy Ticket Now
+              </button>
+            </Link>
+          ) : (
+            <Button disabled className="mt-8 w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity">
               Buy Ticket Now
-            </button>
-          </Link>
+            </Button>
+          )}
         </div>
       </div>
 

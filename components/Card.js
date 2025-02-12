@@ -9,6 +9,7 @@ import Link from "next/link";
 import { auth } from "@clerk/nextjs/server";
 import { deleteEventbyId } from "@/lib/actions/events.actions";
 import DeleteEventBtn from "./DeleteEventBtn";
+import { Button } from "./ui/button";
 
 const Card = async ({ event, hasOrderLink, hidePrice }) => {
   const { sessionClaims } = await auth();
@@ -17,9 +18,8 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
 
   return (
     <div
-
       href={`/events/${event._id}`}
-      className="bg-white  relative border flex-shrink-0 border-purple-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-purple-100 hover:scale-105 transition-all h-[530px] duration-300 max-w-lg"
+      className="bg-white relative border flex-shrink-0 border-purple-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-purple-100 hover:scale-95 transition-all h-[530px] duration-300 max-w-lg"
     >
       {/* Event Image */}
       <div className="relative h-56">
@@ -76,9 +76,22 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
 
         {/* Action Section */}
         <div className="flex justify-start gap-4 items-center">
-          <Link href={`/checkout/${event._id}`} className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-8 rounded-full font-medium hover:opacity-90 transition-opacity">
-            Buy Now
-          </Link>
+          {!isEventOwner ? (
+            <Link
+              href={`/checkout/${event._id}`}
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-8 rounded-full font-medium hover:opacity-90 transition-opacity"
+            >
+              Buy Now
+            </Link>
+          ) : (
+            <Button
+              // href={`/checkout/${event._id}`}
+              disabled
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-8 rounded-full font-medium hover:opacity-90 transition-opacity"
+            >
+              Buy Now
+            </Button>
+          )}
         </div>
       </div>
     </div>

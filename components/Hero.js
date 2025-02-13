@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-
 const Hero = () => {
   return (
     <div className="relative w-full h-screen bg-white flex items-center justify-center overflow-hidden">
@@ -29,7 +28,13 @@ const Hero = () => {
             />
             <Link href="/search">
               <div className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-purple-500 p-3 rounded-full hover:bg-purple-600 transition-all">
-                <Image className="fill-white" src="/search.svg" width={20} height={20} alt="Search" />
+                <Image
+                  className="fill-white"
+                  src="/search.svg"
+                  width={20}
+                  height={20}
+                  alt="Search"
+                />
               </div>
             </Link>
           </div>

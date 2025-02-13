@@ -24,7 +24,6 @@ const SelectCategory = () => {
     getAllCategories();
   }, []);
 
-
   // Handling Category Click.
   const handleCategoryClick = (categoryName) => {
     let newUrl = "";
@@ -46,20 +45,20 @@ const SelectCategory = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <h1 className="text-4xl sm:text-5xl font-bold text-center leading-tight">
+    <div className="w-full flex flex-col items-center px-4 sm:px-6 lg:px-8">
+      <h1 className="text-3xl sm:text-5xl font-bold text-center leading-tight">
         Trusted by
       </h1>
-      <h1 className="text-4xl sm:text-5xl font-bold text-center mb-8">
+      <h1 className="text-3xl sm:text-5xl font-bold text-center mb-6 sm:mb-8">
         Thousands of Events
       </h1>
 
       <Search />
 
       {/* Category Filter */}
-      <div className="flex justify-center mt-2 gap-4">
+      <div className="flex flex-wrap justify-center mt-4 gap-3 sm:gap-4">
         <button
-          className="px-6 py-2 border border-gray-300 rounded-full text-gray-700 bg-white hover:bg-purple-500 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="px-5 py-2 border border-gray-300 rounded-full text-gray-700 bg-white hover:bg-purple-500 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-purple-500"
           onClick={() => handleCategoryClick("ALL")}
         >
           All
@@ -68,7 +67,7 @@ const SelectCategory = () => {
           categories.map((category) => (
             <button
               key={category._id}
-              className="px-6 py-2 border border-gray-300 rounded-full text-gray-700 bg-white hover:bg-purple-500 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="px-5 py-2 border border-gray-300 rounded-full text-gray-700 bg-white hover:bg-purple-500 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-purple-500"
               onClick={() =>
                 handleCategoryClick(category.name) && setCategory(category.name)
               }

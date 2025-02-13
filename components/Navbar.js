@@ -11,7 +11,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="w-full flex justify-center h-20">
+    <div className="w-full relative flex justify-center h-20">
       {/* Left side of the Navbar */}
       <div className="left p-2 justify-between items-center w-[40%] h-full  flex">
         <div className="logo">

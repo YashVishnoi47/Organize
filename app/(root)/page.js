@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Hero from "@/components/Hero";
-import PixelCard from "@/components/SharedAnimatedComp/PixelCard";
+import PixelCard from "@/components/SharedAnimatedComp/AnimatedCard";
 import { gettAllEvents } from "@/lib/actions/events.actions";
 import Collections from "@/components/Collections";
 import SelectCategory from "@/components/SelectCategory";

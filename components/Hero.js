@@ -2,23 +2,38 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { auth } from "@clerk/nextjs/server";
 
 const Hero = () => {
+  const { sessionClaims } = auth();
+  const userId = sessionClaims?.publicMetadata.userId;
   return (
-    <div className="relative w-full min-h-screen flex flex-col lg:flex-row items-center justify-between gap-8 py-12 px-4 sm:px-6 md:py-16 lg:px-8 overflow-hidden">
+    <div className="relative w-full min-h-screen flex flex-col items-center justify-center gap-12 py-20 px-8 sm:px-16 md:py-24 lg:px-20 bg-gradient-to-b from-purple-50 to-white overflow-hidden">
+      {/* Background Accents */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        <div className="absolute top-16 left-[-50px] w-48 h-48 bg-purple-100 rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute bottom-16 right-[-50px] w-48 h-48 bg-purple-100 rounded-full blur-3xl opacity-50"></div>
+      </div>
+
       {/* Main Content */}
-      <div className="relative z-10 w-full lg:max-w-2xl flex flex-col items-center lg:items-start">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-800 mb-4 md:mb-6 text-center lg:text-left">
-          Plan and Celebrate Your Events Seamlessly
+      <div className="relative z-10 w-full max-w-5xl flex flex-col items-center text-center">
+        {/* Heading with Highlight */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-900 mb-6 md:mb-8 relative">
+          Plan and <span className="text-purple-600">Celebrate</span> Your
+          Events Seamlessly
+          <span className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-purple-500 rounded-full"></span>
         </h1>
 
-        <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-8 md:mb-10 text-center lg:text-left max-w-3xl">
-          Discover the perfect venues, organize events, and create unforgettable
-          memories with ease.
+        <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-10 max-w-4xl leading-relaxed">
+          Find the perfect venues, organize events, and create{" "}
+          <span className="text-purple-600 font-semibold">
+            unforgettable moments
+          </span>
+          . Join thousands of successful event organizers today!
         </p>
 
-        {/* Trust Elements */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        {/* Trust Elements - Adjusted Grid */}
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-center">
           {[
             {
               icon: "/eventicon.svg",
@@ -38,49 +53,50 @@ const Hero = () => {
           ].map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-purple-100 p-4 sm:p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              className="flex flex-col items-center bg-purple-100 p-6 rounded-xl shadow-md border border-purple-300 hover:shadow-lg transition-shadow w-full max-w-xs"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 relative">
-                <Image
+              <div className="w-14 h-14 flex items-center justify-center bg-purple-200 rounded-full shadow-md">
+                <img
                   src={item.icon}
-                  layout="fill"
-                  objectFit="contain"
+                  className="w-10 h-10 object-contain"
                   alt={item.title}
                 />
               </div>
-              <h3 className="text-sm sm:text-base md:text-lg font-semibold mt-3 sm:mt-4 text-center">
+              <h3 className="text-lg font-semibold mt-4 text-purple-900">
                 {item.title}
               </h3>
-              <p className="text-xs sm:text-sm text-gray-600 text-center mt-1">
-                {item.text}
-              </p>
+              <p className="text-sm text-purple-700 mt-2">{item.text}</p>
             </div>
           ))}
         </div>
 
         {/* CTA Button */}
-        <div className="w-full mt-8 sm:mt-12 flex justify-center lg:justify-start">
-          <Link href="/events/create" passHref>
-            <div className="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 sm:px-10 rounded-full text-base sm:text-lg transition-all duration-300 shadow-lg w-full sm:w-auto text-center">
-              Organize your First Event Now
-            </div>
+        <div className="w-full flex justify-center mt-12">
+          <Link href={userId ? "/events/create" : "/sign-in"} passHref>
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white py-4 px-10 rounded-full text-lg font-semibold transition-all duration-300 shadow-xl transform hover:scale-105">
+              Organize Your First Event Now
+            </Button>
           </Link>
         </div>
-      </div>
-
-      {/* Right Side Visual */}
-      <div className="relative w-full lg:w-1/2 h-64 sm:h-80 md:h-96 lg:h-auto lg:min-h-[600px] mt-8 lg:mt-0">
-        <Image
-          src="/eventgheroimage.jpg"
-          alt="Event Celebration"
-          layout="fill"
-          objectFit="cover"
-          className="rounded-xl lg:rounded-2xl shadow-lg"
-          priority
-        />
       </div>
     </div>
   );
 };
+
+{
+  /* Right Side Visual */
+}
+{
+  /* <div className="relative w-full lg:w-1/2 h-64 sm:h-80 md:h-96 lg:h-auto lg:min-h-[600px] mt-8 lg:mt-0">
+  <Image
+    src="/eventgheroimage.jpg"
+    alt="Event Celebration"
+    layout="fill"
+    objectFit="cover"
+    className="rounded-xl lg:rounded-2xl shadow-lg"
+    priority
+  />
+</div> */
+}
 
 export default Hero;

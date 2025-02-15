@@ -17,10 +17,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
   const isEventOwner = userId === event.organizer._id.toString();
 
   return (
-    <div
-      href={`/events/${event._id}`}
-      className="bg-white relative border flex-shrink-0 border-purple-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-purple-100 hover:scale-95 transition-all h-[530px] duration-300 max-w-lg"
-    >
+    <div className="bg-white relative border flex-shrink-0 border-purple-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-purple-100 hover:scale-95 transition-all h-[530px] duration-300 max-w-lg">
       {/* Event Image */}
       <div className="relative h-56">
         <Image
@@ -78,7 +75,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
         <div className="flex justify-start gap-4 items-center">
           {!isEventOwner ? (
             <Link
-              href={`/checkout/${event._id}`}
+              href={userId ? `/checkout/${event._id}` : "/sign-in"}
               className="bg-gradient-to-r from-purple-500 to-purple-800 text-white py-2 px-8 rounded-full font-medium hover:opacity-90 transition-opacity"
             >
               Buy Now

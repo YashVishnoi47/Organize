@@ -17,7 +17,7 @@ const Profile = async () => {
   const data = tickets;
 
   return (
-    <div className="min-h-screen w-full py-10 px-4 bg-gray-50">
+    <div className="min-h-screen w-full py-10 px-4 ">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Profile Header */}
         <div className="relative text-center">
@@ -31,9 +31,19 @@ const Profile = async () => {
 
         {/* Organized Events Section */}
         <section>
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">
-            Your Organized Events
-          </h2>
+          <div className="flex w-full justify-between items-center">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">
+              Your Organized Events
+            </h2>
+
+            {OrganizedEvents?.data?.length > 0 && (
+              <Link href="/events/create" passHref>
+                <div className="bg-purple-500 hover:bg-purple-600 text-white py-2 px-6 sm:px-10 rounded-full text-base sm:text-lg transition-all duration-300 shadow-lg w-full sm:w-[100%] text-center">
+                  Add Event
+                </div>
+              </Link>
+            )}
+          </div>
           <div className="bg-white rounded-xl shadow-lg p-6">
             {OrganizedEvents?.data?.length > 0 ? (
               <Collections
@@ -45,7 +55,13 @@ const Profile = async () => {
                 totalPages={OrganizedEvents?.length}
               />
             ) : (
-              <p className="text-gray-600">No events organized yet!</p>
+              <p className="text-gray-600">
+                <Link href="/events/create" passHref>
+                  <div className="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 sm:px-10 rounded-full text-base sm:text-lg transition-all duration-300 shadow-lg w-full sm:w-[25%] text-center">
+                    Become an Organizer
+                  </div>
+                </Link>
+              </p>
             )}
           </div>
         </section>

@@ -79,7 +79,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
           {!isEventOwner ? (
             <Link
               href={`/checkout/${event._id}`}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-8 rounded-full font-medium hover:opacity-90 transition-opacity"
+              className="bg-gradient-to-r from-purple-500 to-purple-800 text-white py-2 px-8 rounded-full font-medium hover:opacity-90 transition-opacity"
             >
               Buy Now
             </Link>
@@ -87,7 +87,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
             <Button
               // href={`/checkout/${event._id}`}
               disabled
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-8 rounded-full font-medium hover:opacity-90 transition-opacity"
+              className="bg-gradient-to-d from-purple-500 to-purple-800 text-white py-2 px-8 rounded-full font-medium hover:opacity-90 transition-opacity"
             >
               Buy Now
             </Button>

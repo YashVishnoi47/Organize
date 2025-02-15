@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="selection:bg-purple-400 bg-gradient-to-b from-purple-50 to-white">
+        <body className="selection:bg-purple-600 selection:text-white bg-gradient-to-b from-purple-50 to-white">
           <Navbar />
           {children}
         </body>

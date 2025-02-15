@@ -25,7 +25,7 @@ const EventPage = async ({ params: { id }, searchParams }) => {
   const isEventOwner = userId === event.organizer._id.toString();
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 text-black">
+    <div className="w-full min-h-screen text-black">
       <div className="max-w-7xl mx-auto p-8 flex flex-col lg:flex-row items-stretch gap-8">
         {/* Left: Event Image */}
         <div className="relative w-full lg:w-2/5 h-80 lg:h-auto overflow-hidden rounded-xl shadow-md">
@@ -90,12 +90,15 @@ const EventPage = async ({ params: { id }, searchParams }) => {
           </div>
           {!isEventOwner ? (
             <Link href={`/checkout/${event._id}`}>
-              <button className="mt-8 w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity">
+              <button className="mt-8 w-full bg-gradient-to-t from-purple-500 to-purple-700 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity">
                 Buy Ticket Now
               </button>
             </Link>
           ) : (
-            <Button disabled className="mt-8 w-full bg-gradient-to-r from-red-500 to-pink-600 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity">
+            <Button
+              disabled
+              className="mt-8 w-full bg-gradient-to-t from-purple-500 to-purple-700 text-white py-3 px-8 rounded-full text-lg font-bold shadow-lg hover:opacity-90 transition-opacity"
+            >
               Buy Ticket Now
             </Button>
           )}

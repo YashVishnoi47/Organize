@@ -8,7 +8,7 @@ const Hero = () => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.publicMetadata.userId;
   return (
-    <div className="relative w-full min-h-screen flex flex-col items-center justify-center gap-12 py-20 px-8 sm:px-16 md:py-24 lg:px-20 bg-gradient-to-b from-purple-50 to-white overflow-hidden">
+    <div className="relative w-full min-h-screen flex flex-col items-center justify-center gap-12 py-20 px-8 sm:px-16 md:py-24 lg:px-20 overflow-hidden">
       {/* Background Accents */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <div className="absolute top-16 left-[-50px] w-48 h-48 bg-purple-100 rounded-full blur-3xl opacity-50"></div>

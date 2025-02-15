@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Footer from "@/components/footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
         <body className="selection:bg-purple-600 selection:text-white bg-gradient-to-b from-purple-50 to-white">
           <Navbar />
           {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

@@ -20,7 +20,7 @@ const Collections = ({
             const hasOrderLink = collectionType === "Evnets_Organized";
             const hidePrice = collectionType === "My-Tickets";
             return (
-              <Link key={event._id} href={userId ?`/events/${event._id}`:("/sign-in")}>
+              <div key={event._id} >
                 <li className="list-none">
                   <Card
                     event={event}
@@ -28,7 +28,7 @@ const Collections = ({
                     hidePrice={hidePrice}
                   />
                 </li>
-              </Link>
+              </div>
             );
           })}
         </div>

@@ -11,7 +11,7 @@ const Checkout = async ({ params: { id } }) => {
   
  
   return (
-    <div className="w-full min-h-screen bg-gray-50 text-black">
+    <div className="w-full min-h-screen text-black">
       <Payment event={event} userId={userId}/>
     </div>
   );

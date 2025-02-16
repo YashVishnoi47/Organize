@@ -10,6 +10,17 @@ import { auth } from "@clerk/nextjs/server";
 import { deleteEventbyId } from "@/lib/actions/events.actions";
 import DeleteEventBtn from "./DeleteEventBtn";
 import { Button } from "./ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 const Card = async ({ event, hasOrderLink, hidePrice }) => {
   const { sessionClaims } = await auth();
@@ -17,6 +28,8 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
   const isEventOwner = userId === event.organizer._id.toString();
 
   return (
+    <Link href={isEventOwner ? "#" :`/events/${event._id}`}>
+
     <div className="bg-white relative border flex-shrink-0 border-purple-100 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-purple-100 hover:scale-95 transition-all h-[530px] duration-300 max-w-lg">
       {/* Event Image */}
       <div className="relative h-56">
@@ -27,6 +40,15 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
           className="object-cover rounded-t-2xl"
         />
         {isEventOwner && !hidePrice && (
+          // <div className="flex gap-3 z-10 right-2 top-2 absolute">
+          //   <Link href={`/events/create/${event._id}/update`}>
+          //     <div className=" text-black hover:text-white bg-white flex justify-center items-center hover:bg-purple-400 p-2 rounded-xl font-medium transition-all duration-200 ease-in-out">
+          //       <CiEdit className="text-2xl" />
+          //     </div>
+          //   </Link>
+          //   <DeleteEventBtn event={event} />
+          // </div>
+
           <div className="flex gap-3 z-10 right-2 top-2 absolute">
             <Link href={`/events/create/${event._id}/update`}>
               <div className=" text-black hover:text-white bg-white flex justify-center items-center hover:bg-purple-400 p-2 rounded-xl font-medium transition-all duration-200 ease-in-out">
@@ -39,7 +61,7 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-t-2xl"></div>
       </div>
-
+      <Link key={event._id} href={userId ?`/events/${event._id}`:("/sign-in")}>
       {/* Event Content */}
       <div className="p-6">
         <h3 className="text-2xl font-bold text-gray-800 line-clamp-2 mb-2">
@@ -91,7 +113,10 @@ const Card = async ({ event, hasOrderLink, hidePrice }) => {
           )}
         </div>
       </div>
+      
+      </Link>
     </div>
+    </Link>
   );
 };
 

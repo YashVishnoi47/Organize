@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
@@ -6,14 +7,18 @@ export default function Footer() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left Section - Company Info */}
-          <div>
+          <div className="flex flex-col items-start">
             <h3 className="text-xl font-bold">Your Company</h3>
             <p className="text-gray-300 mt-2">
               A short description about your company.
             </p>
-            <button className="mt-4 px-4 py-2 bg-white text-purple-700 font-semibold rounded-lg hover:bg-purple-600 hover:text-white transition">
+
+            <Link
+              href={"/contact"}
+              className="mt-4 px-4 py-2  bg-white text-purple-700 font-semibold rounded-lg hover:bg-purple-600 hover:text-white transition"
+            >
               Contact Us
-            </button>
+            </Link>
           </div>
 
           {/* Middle Section - Quick Links */}

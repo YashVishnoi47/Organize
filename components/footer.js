@@ -8,9 +8,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Left Section - Company Info */}
           <div className="flex flex-col items-start">
-            <h3 className="text-xl font-bold">Your Company</h3>
+            <h3 className="text-2xl font-bold">Organize</h3>
             <p className="text-gray-300 mt-2">
-              A short description about your company.
+            Seamlessly Organize, share, and discover events that bring communities together.
             </p>
 
             <Link
@@ -96,7 +96,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-8 text-center text-gray-300">
           <p>
-            &copy; {new Date().getFullYear()} Your Company. All rights reserved.
+            &copy; {new Date().getFullYear()} Organize. All rights reserved.
           </p>
         </div>
       </div>

@@ -11,7 +11,7 @@ export default function AboutUs() {
           About Us
         </h1>
         <p className="text-lg md:text-xl text-gray-700">
-          Welcome to Eventify – your go-to platform for discovering and managing
+          Welcome to Organize – your go-to platform for discovering and managing
           amazing events seamlessly.
         </p>
       </div>

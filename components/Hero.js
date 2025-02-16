@@ -19,13 +19,13 @@ const Hero = () => {
       <div className="relative z-10 w-full max-w-5xl flex flex-col items-center text-center">
         {/* Heading with Highlight */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-900 mb-6 md:mb-8 relative">
-          Plan and <span className="text-purple-600">Celebrate</span> Your
-          Events Seamlessly
-          <span className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-purple-500 rounded-full"></span>
+          <span className="text-purple-600">Organize</span> and{" "}
+          <span className="text-purple-600">Celebrate</span> Your Events
+          Seamlessly
         </h1>
 
         <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-10 max-w-4xl leading-relaxed">
-          Find the perfect venues, organize events, and create{" "}
+          Organize events, and create{" "}
           <span className="text-purple-600 font-semibold">
             unforgettable moments
           </span>

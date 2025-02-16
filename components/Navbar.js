@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/sheet";
 import { TfiMenu } from "react-icons/tfi";
 import Link from "next/link";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -27,7 +28,7 @@ const Navbar = () => {
       <div className="left p-2 justify-between items-center w-[40%] h-full  flex">
         <div className="logo">
           <Link href="/">
-            <h1 className="font-bold text-2xl">LogoHere</h1>
+            <h1 className="font-bold text-4xl text-purple-600">Organize</h1>
           </Link>
         </div>
       </div>

@@ -1,6 +1,6 @@
 # 🎉 Organize - Modern Event Management Platform
 
-![Organize Banner](https://via.placeholder.com/1200x600.png?text=Organize+Banner+Here) <!-- Replace with your actual banner image -->
+![Organize Banner](/Organize%20Pc.png) <!-- Replace with your actual banner image -->
 
 [![Clerk Authentication](https://img.shields.io/badge/Authentication-Clerk-3B82F6)](https://clerk.com)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248)](https://www.mongodb.com)

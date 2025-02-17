@@ -112,22 +112,22 @@ const EventForm = ({ event, type, userId, eventId }) => {
   };
 
   return (
-    <div className="w-full min-h-screen mt-4 flex items-center flex-col">
+    <div className="w-full min-h-screen mt-4 flex items-center flex-col px-4 sm:px-6 lg:px-8">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className=" flex justify-center gap-10 mt-8 items-center h-full w-full"
+          className="flex flex-col lg:flex-row justify-center gap-4 md:gap-10 mt-8 items-center h-full w-full"
         >
-          {/* Event Details  */}
-          <div className="formfield flex flex-col gap-2 w-[50%] h-full -2 ">
+          {/* Event Details */}
+          <div className="formfield flex flex-col gap-2 w-full lg:w-[50%] h-full">
             {/* Title and Dropdown */}
-            <div className="flex px-2 gap-4 justify-center w-full">
+            <div className="flex flex-col md:flex-row px-2 gap-4 justify-center w-full">
               {/* Title form field */}
               <FormField
                 control={form.control}
                 name="title"
                 render={({ field }) => (
-                  <FormItem className="w-1/2 flex  flex-col gap-1 items-center">
+                  <FormItem className="w-full md:w-1/2 flex flex-col gap-1 items-center">
                     <FormControl>
                       <Input
                         placeholder="Title"
@@ -139,13 +139,13 @@ const EventForm = ({ event, type, userId, eventId }) => {
                   </FormItem>
                 )}
               />
-
+  
               {/* Category Dropdown */}
               <FormField
                 control={form.control}
                 name="categoryId"
                 render={({ field }) => (
-                  <FormItem className="w-1/2 flex justify-center flex-col gap-1 items-start">
+                  <FormItem className="w-full md:w-1/2 flex justify-center flex-col gap-1 items-start">
                     <FormControl>
                       <Dropdown
                         placeholder="Category"
@@ -159,7 +159,7 @@ const EventForm = ({ event, type, userId, eventId }) => {
                 )}
               />
             </div>
-
+  
             {/* Description form field */}
             <FormField
               control={form.control}
@@ -170,23 +170,23 @@ const EventForm = ({ event, type, userId, eventId }) => {
                     <Textarea
                       placeholder="Description"
                       {...field}
-                      className="w-[100%] border-2 focus:border-black rounded-xl mt-2"
+                      className="w-full border-2 focus:border-black rounded-xl mt-2"
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
+  
             {/* Location and Price */}
-            <div className="flex px-2 gap-4 justify-center w-full">
+            <div className="flex flex-col md:flex-row px-2 gap-4 justify-center w-full">
               {/* Location form field */}
               <FormField
                 control={form.control}
                 name="location"
                 render={({ field }) => (
-                  <FormItem className="w-1/2 flex flex-col gap-1 items-center">
-                    <FormControl className="">
+                  <FormItem className="w-full md:w-1/2 flex flex-col gap-1 items-center">
+                    <FormControl>
                       <Input
                         placeholder="Location"
                         {...field}
@@ -197,9 +197,9 @@ const EventForm = ({ event, type, userId, eventId }) => {
                   </FormItem>
                 )}
               />
-
+  
               {/* Price and IsFree */}
-              <div className="flex items-center relative w-1/2">
+              <div className="flex items-center relative w-full md:w-1/2">
                 {/* Price form field */}
                 <FormField
                   control={form.control}
@@ -218,19 +218,19 @@ const EventForm = ({ event, type, userId, eventId }) => {
                     </FormItem>
                   )}
                 />
-
+  
                 {/* isFree form field */}
                 <FormField
                   control={form.control}
                   name="isFree"
                   render={({ field }) => (
-                    <FormItem className="bg-white top-4 absolute right-2 flex flex-col gap-1 items-center">
+                    <FormItem className="bg-white top-4 absolute right-2 md:static md:ml-2 flex flex-col gap-1 items-center">
                       <FormControl>
                         <div className="flex justify-center items-center gap-2">
                           <label htmlFor="isFree">Is Free</label>
                           <Checkbox
                             onCheckedChange={field.onChange}
-                            checked={field.value} // Reflect current value
+                            checked={field.value}
                             id="isFree"
                           />
                         </div>
@@ -241,15 +241,14 @@ const EventForm = ({ event, type, userId, eventId }) => {
                 />
               </div>
             </div>
-
+  
             {/* URL */}
-            <div className="flex px-2 gap-4 justify-start w-full">
-              {/* URL form field */}
+            <div className="flex px-2 justify-start w-full">
               <FormField
                 control={form.control}
                 name="url"
                 render={({ field }) => (
-                  <FormItem className="w-1/2 flex flex-col gap-1 items-center">
+                  <FormItem className="w-full flex flex-col gap-1 items-center">
                     <FormControl>
                       <Input
                         placeholder="URL"
@@ -262,20 +261,18 @@ const EventForm = ({ event, type, userId, eventId }) => {
                 )}
               />
             </div>
-
+  
             {/* Start and end date picker */}
-            <div className="flex px-2 gap-4 justify-start w-full">
-              {/* Start Date Time form field */}
+            <div className="flex flex-col md:flex-row px-2 gap-4 justify-start w-full">
+              {/* Start Date Time */}
               <FormField
                 control={form.control}
                 name="startDateTime"
                 render={({ field }) => (
                   <FormItem className="w-full flex flex-col gap-1 items-center justify-center">
                     <FormControl className="w-full">
-                      <div className="flex flex-col w-[20%]">
-                        <label htmlFor="startDateTime">
-                          Start Date and Time
-                        </label>
+                      <div className="flex flex-col w-full md:w-[80%]">
+                        <label htmlFor="startDateTime">Start Date and Time</label>
                         <DatePicker
                           className="w-full border-2 rounded-full px-2 py-2 mt-2"
                           showTimeSelect
@@ -290,14 +287,15 @@ const EventForm = ({ event, type, userId, eventId }) => {
                   </FormItem>
                 )}
               />
-              {/* End Date Time form field */}
+  
+              {/* End Date Time */}
               <FormField
                 control={form.control}
                 name="endDateTime"
                 render={({ field }) => (
                   <FormItem className="w-full flex flex-col gap-1 items-center justify-center">
                     <FormControl className="w-full">
-                      <div className="flex flex-col w-[20%]">
+                      <div className="flex flex-col w-full md:w-[80%]">
                         <label htmlFor="EndDateTime">End Date and Time</label>
                         <DatePicker
                           className="w-full border-2 rounded-full px-2 py-2 mt-2"
@@ -314,14 +312,14 @@ const EventForm = ({ event, type, userId, eventId }) => {
                 )}
               />
             </div>
-
-            {/* submit BUttonZ */}
+  
+            {/* Submit Button */}
             <Button
-              className="mt-3 rounded-full"
+              className="mt-3 rounded-full w-full md:w-auto"
               disabled={form.formState.isSubmitting}
               type="submit"
             >
-              {form.formState.isSubmitting ? (
+                {form.formState.isSubmitting ? (
                 <div role="status">
                   <svg
                     aria-hidden="true"
@@ -346,16 +344,15 @@ const EventForm = ({ event, type, userId, eventId }) => {
               )}
             </Button>
           </div>
-
+  
           {/* Event Poster */}
-          <div className="ImageField flex flex-col gap-2 w-[40%] h-full -2 ">
-            {/* Image Upload form field */}
+          <div className="ImageField flex flex-col gap-2 w-full lg:w-[40%] h-full">
             <FormField
               control={form.control}
               name="imageUrl"
               render={({ field }) => (
                 <FormItem className="w-full flex flex-col gap-1 items-start">
-                  <FormControl className="border-2 border-purple-800">
+                  <FormControl className="border-2 border-purple-800 w-full">
                     <FielUploader
                       onFieldChange={field.onChange}
                       imageUrl={field.value}

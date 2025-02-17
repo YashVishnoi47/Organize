@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 
-/* .form-field{
-  width: 900px;
-  height: 100px;
+/* @media (max-width: 640px) {
+  .ress{
+    flex-direction: column;
+  }
+  
 } */
-
 
 
 #removeC {

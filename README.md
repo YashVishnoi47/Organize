@@ -36,14 +36,35 @@ Organize is a full-stack event management platform that revolutionizes how event
 - **🖼️ UploadThing** for effortless media handling
 - **🔑 Clerk** for secure authentication
 
-<!-- ## 🛠️ Installation
+## 🛠️ Installation
 
-1. **Clone the repository**
+Follow these steps to set up **Organize** on your local machine:
+
+1. **Clone the repository**  
    ```bash
    git clone https://github.com/yourusername/organize.git
    cd organize
+   ```
 
-1. **Clone the repository**
+2. **Install dependencies**  
    ```bash
-   git clone https://github.com/yourusername/organize.git
-   cd organize -->
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Set up environment variables**  
+   Create a `.env.local` file in the root directory and add your required API keys and credentials:
+   ```env
+   NEXT_PUBLIC_CLERK_FRONTEND_API=your_clerk_api_key
+   MONGODB_URI=your_mongodb_connection_string
+   UPLOADTHING_SECRET=your_uploadthing_api_key
+   ```
+
+4. **Run the development server**  
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+   Your application will be live at **http://localhost:3000** 🚀

@@ -36,9 +36,14 @@ Organize is a full-stack event management platform that revolutionizes how event
 - **🖼️ UploadThing** for effortless media handling
 - **🔑 Clerk** for secure authentication
 
-## 🛠️ Installation
+<!-- ## 🛠️ Installation
 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/yourusername/organize.git
    cd organize
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/organize.git
+   cd organize -->

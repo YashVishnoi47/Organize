@@ -21,7 +21,7 @@ export default function AboutUs() {
         <div className="p-6 text-center shadow-lg border border-purple-300 bg-white rounded-xl hover:shadow-2xl transition">
           <div className="flex flex-col items-center">
             <FaUsers className="text-5xl text-purple-700 mb-4" />
-            <h2 className="text-xl font-semibold mb-2">Community Driven</h2>
+            <h2 className="text-xl font-semibold mb-2">Community Drivenn</h2>
             <p className="text-gray-600">
               Join a growing community of event enthusiasts.
             </p>
